@@ -1,0 +1,220 @@
+---
+---
+
+<section class="hero" id="inicio">
+    <div class="hero-content">
+        <h1>
+            Transformamos <span class="highlight">tus ideas</span> en software potente
+        </h1>
+        <p>Desarrollamos aplicaciones web SaaS escalables y modernas que impulsan el crecimiento de tu negocio</p>
+        <div class="hero-buttons">
+            <a href="#contacto" class="btn-primary">Comenzar proyecto</a>
+            <a href="#casos" class="btn-secondary">Ver demos</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <div class="browser-mockup">
+            <div class="browser-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div class="mockup-content">
+                <div class="mockup-bar"></div>
+                <div class="mockup-text" style="width: 40%;"></div>
+                <div class="mockup-text" style="width: 50%;"></div>
+                <div class="mockup-text" style="width: 35%;"></div>
+            </div>
+        </div>
+        <div class="slider-dots">
+            <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero {
+        margin-top: 80px;
+        background: linear-gradient(135deg, rgba(61, 90, 241, 0.05), rgba(107, 76, 230, 0.08));
+        padding: 100px 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+        min-height: 700px;
+    }
+
+    .hero-content {
+        max-width: 600px;
+    }
+
+    .hero h1 {
+        font-size: 64px;
+        font-weight: bold;
+        line-height: 1.1;
+        margin-bottom: 30px;
+    }
+
+    .hero h1 .highlight {
+        color: #3d5af1;
+    }
+
+    .hero p {
+        font-size: 20px;
+        color: #555;
+        margin-bottom: 40px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 20px;
+    }
+
+    .btn-primary {
+        background: #6b4ce6;
+        color: white;
+        padding: 15px 35px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: inline-block;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(107, 76, 230, 0.4);
+    }
+
+    .btn-secondary {
+        background: transparent;
+        color: #3d5af1;
+        padding: 12px 30px;
+        border: 2px solid #3d5af1;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        display: inline-block;
+    }
+
+    .btn-secondary:hover {
+        background: #3d5af1;
+        color: white;
+    }
+
+    .hero-image {
+        width: 600px;
+        height: 450px;
+        background: #f8f9ff;
+        border-radius: 20px;
+        position: relative;
+        padding: 50px;
+    }
+
+    .browser-mockup {
+        width: 100%;
+        height: 100%;
+        background: white;
+        border-radius: 12px;
+        border: 2px solid #e0e0e0;
+        padding: 30px 20px 20px;
+        position: relative;
+    }
+
+    .browser-dots {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        display: flex;
+        gap: 8px;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+
+    .dot:nth-child(1) { background: #ff5f56; }
+    .dot:nth-child(2) { background: #ffbd2e; }
+    .dot:nth-child(3) { background: #27c93f; }
+
+    .mockup-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .mockup-bar {
+        height: 12px;
+        background: rgba(61, 90, 241, 0.3);
+        border-radius: 6px;
+        width: 60%;
+    }
+
+    .mockup-text {
+        height: 8px;
+        background: #e0e0e0;
+        border-radius: 4px;
+    }
+
+    .slider-dots {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 12px;
+    }
+
+    .slider-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #e0e0e0;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .slider-dot.active {
+        background: #3d5af1;
+    }
+
+    @media (max-width: 1024px) {
+        .hero {
+            flex-direction: column;
+            text-align: center;
+            padding: 80px 40px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+        }
+
+        .hero-image {
+            margin-top: 50px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            justify-content: center;
+        }
+    }
+</style>
+
+<script>
+    const sliderDots = document.querySelectorAll('.slider-dot');
+    let currentSlide = 0;
+
+    setInterval(() => {
+        sliderDots[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % sliderDots.length;
+        sliderDots[currentSlide].classList.add('active');
+    }, 3000);
+</script>

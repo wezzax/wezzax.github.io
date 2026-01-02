@@ -1,0 +1,67 @@
+---
+const stats = [
+    { number: "200+", label: "Proyectos completados", color: "#3d5af1" },
+    { number: "98%", label: "Satisfacción del cliente", color: "#6b4ce6" },
+    { number: "50+", label: "Empresas confían en nosotros", color: "#3feaac" },
+    { number: "24/7", label: "Soporte técnico", color: "#3d5af1" }
+];
+---
+
+<section class="stats">
+    <div class="stats-container">
+        <h2>Resultados que hablan por sí solos</h2>
+        <div class="stats-grid">
+            {stats.map(stat => (
+                    <div class="stat-item">
+                        <h3 style={`color: ${stat.color}`}>{stat.number}</h3>
+                        <p>{stat.label}</p>
+                    </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .stats {
+        background: #f8f9ff;
+        padding: 80px 60px;
+        margin: 100px 0;
+    }
+
+    .stats-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .stats h2 {
+        text-align: center;
+        font-size: 38px;
+        margin-bottom: 60px;
+        font-weight: bold;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 60px;
+        text-align: center;
+    }
+
+    .stat-item h3 {
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .stat-item p {
+        color: #666;
+        font-size: 16px;
+    }
+
+    @media (max-width: 768px) {
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+    }
+</style>

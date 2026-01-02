@@ -1,0 +1,65 @@
+---
+---
+
+<footer>
+    <div class="footer-content">
+        <div class="copyright">
+            © 2024 Wezzax. Todos los derechos reservados.
+        </div>
+        <div class="footer-links">
+            <a href="#">Política de Privacidad</a>
+            <a href="#">Términos de Uso</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </div>
+</footer>
+
+<style>
+    footer {
+        background: #1a1a1a;
+        padding: 30px 60px;
+        color: white;
+    }
+
+    .footer-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 40px;
+    }
+
+    .footer-links a {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+        color: white;
+    }
+
+    .copyright {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+        .footer-content {
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
+</style>

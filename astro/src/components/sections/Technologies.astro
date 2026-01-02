@@ -1,0 +1,69 @@
+---
+const technologies = ["React", "Node", "Python", "AWS", "Docker", "K8s", "TypeScript"];
+const colors = ["#3d5af1", "#6b4ce6", "#3feaac", "#3d5af1", "#6b4ce6", "#3feaac", "#3d5af1"];
+---
+
+<section class="technology">
+    <div class="tech-container">
+        <div class="section-title">
+            <h2>Tecnologías que dominamos</h2>
+        </div>
+        <div class="tech-grid">
+            {technologies.map((tech, index) => (
+                    <div class="tech-item" style={`color: ${colors[index]}`}>
+                        {tech}
+                    </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .technology {
+        background: #f8f9ff;
+        padding: 80px 60px;
+    }
+
+    .tech-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+        font-size: 42px;
+        font-weight: bold;
+    }
+
+    .tech-grid {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .tech-item {
+        width: 100px;
+        height: 100px;
+        background: white;
+        border: 2px solid #e0e0e0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 16px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .tech-item:hover {
+        transform: scale(1.1);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+</style>
