@@ -2,9 +2,9 @@ services:
   app:
     image: node:22.12-slim
     volumes:
-      - .:/app
+      - ./astro:/app
     working_dir: /app
-    command: tail -f /dev/null
+    command: npm run dev -- --host
     ports:
       - "4100:4321"
 
