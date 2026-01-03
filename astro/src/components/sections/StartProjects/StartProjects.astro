@@ -1,0 +1,26 @@
+---
+import './styles.css';
+
+interface Props {
+    title: string,
+    description: string,
+    actions: {
+        id: string,
+        class: string,
+        label: string,
+    }[],
+}
+
+const { title, description, actions } = Astro.props;
+
+---
+
+<section class="cta-section" id="start-project">
+    <h2>{title}</h2>
+    <p>{description}</p>
+    <div class="cta-buttons">
+        {actions.map((action) => (
+          <a href=`#${action.id}` class={action.class}>{action.label}</a>
+        ))}
+    </div>
+</section>

@@ -1,0 +1,35 @@
+---
+import './styles.css';
+
+interface Props {
+    title: string,
+    description: string,
+    items: {
+        title: string,
+        description: string,
+        color: string,
+    }[],
+}
+
+const { title, description, items } = Astro.props;
+---
+
+<section class="case-studies" id="casos">
+    <div class="section-title">
+        <h2>{title}</h2>
+        <p>{description}</p>
+    </div>
+    <div class="cases-grid">
+        {items.map(caseItem => (
+            <div class="case-card">
+                <div class="case-image" style={`background: ${caseItem.color}`}>
+                    <div class="case-mockup"></div>
+                </div>
+                <div class="case-content">
+                    <h3>{caseItem.title}</h3>
+                    <p>{caseItem.description}</p>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>

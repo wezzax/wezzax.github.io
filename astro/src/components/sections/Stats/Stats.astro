@@ -1,0 +1,28 @@
+---
+import './styles.css';
+
+interface Props {
+    title: string,
+    items: {
+        number: string,
+        label: string,
+        color: string,
+    }[],
+}
+
+const { title, items } = Astro.props;
+---
+
+<section class="stats">
+    <div class="stats-container">
+        <h2>{title}</h2>
+        <div class="stats-grid">
+            {items.map(stat => (
+                <div class="stat-item">
+                    <h3 style={`color: ${stat.color}`}>{stat.number}</h3>
+                    <p>{stat.label}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

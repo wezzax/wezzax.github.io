@@ -1,0 +1,47 @@
+---
+import './styles.css';
+---
+
+<section class="hero" id="inicio">
+    <div class="hero-content">
+        <h1>
+            Transformamos <span class="highlight">tus ideas</span> en software potente
+        </h1>
+        <p>Desarrollamos aplicaciones web SaaS escalables y modernas que impulsan el crecimiento de tu negocio</p>
+        <div class="hero-buttons">
+            <a href="#contacto" class="btn-primary">Comenzar proyecto</a>
+            <a href="#casos" class="btn-secondary">Ver demos</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <div class="browser-mockup">
+            <div class="browser-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <div class="mockup-content">
+                <div class="mockup-bar"></div>
+                <div class="mockup-text" style="width: 40%;"></div>
+                <div class="mockup-text" style="width: 50%;"></div>
+                <div class="mockup-text" style="width: 35%;"></div>
+            </div>
+        </div>
+        <div class="slider-dots">
+            <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const sliderDots = document.querySelectorAll('.slider-dot');
+    let currentSlide = 0;
+
+    setInterval(() => {
+        sliderDots[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % sliderDots.length;
+        sliderDots[currentSlide].classList.add('active');
+    }, 3000);
+</script>

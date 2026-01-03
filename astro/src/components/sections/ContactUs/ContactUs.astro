@@ -1,0 +1,56 @@
+---
+import './styles.css';
+
+interface Props {
+    title: string,
+    description: string,
+    form: {
+        nameLabel: string,
+        emailLabel: string,
+        companyLabel: string,
+        projectLabel: string,
+        sendButtonLabel: string,
+        confirmationMessage: string,
+    },
+}
+
+const { title, description, form } = Astro.props;
+---
+
+<section class="contact" id="contacto">
+    <div class="section-title">
+        <h2>{title}</h2>
+        <p>{description}</p>
+    </div>
+    <form class="contact-form" data-confirmation-message={form.confirmationMessage}>
+        <div class="form-row">
+            <div class="form-group">
+                <input type="text" placeholder={form.nameLabel} required>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder={form.emailLabel} required>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" placeholder={form.companyLabel}>
+        </div>
+        <div class="form-group">
+            <textarea placeholder={form.projectLabel} required></textarea>
+        </div>
+        <div class="form-submit">
+            <button type="submit" class="btn-submit">{form.sendButtonLabel}</button>
+        </div>
+    </form>
+</section>
+
+<style>
+</style>
+
+<script>
+    document.querySelector('.contact-form')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const thisForm = (this as HTMLFormElement);
+        alert(thisForm.dataset.confirmationMessage);
+        thisForm.reset();
+    });
+</script>

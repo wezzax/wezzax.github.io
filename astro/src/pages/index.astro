@@ -1,26 +1,38 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/layout/Header.astro';
-import Hero from '../components/sections/Hero.astro';
-import Services from '../components/sections/Services.astro';
-import Stats from '../components/sections/Stats.astro';
-import CaseStudies from '../components/sections/CaseStudies.astro';
-import Technologies from '../components/sections/Technologies.astro';
-import Testimonials from '../components/sections/Testimonials.astro';
-import StartProjects from '../components/sections/StartProjects.astro';
-import ContactUs from '../components/sections/ContactUs.astro';
-import Footer from '../components/layout/Footer.astro';
+import Header from '../components/layout/Header/Header.astro';
+import Hero from '../components/sections/Hero/Hero.astro';
+import Services from '../components/sections/Services/Services.astro';
+import Stats from '../components/sections/Stats/Stats.astro';
+import CaseStudies from '../components/sections/CaseStudies/CaseStudies.astro';
+import Technologies from '../components/sections/Technologies/Technologies.astro';
+import Testimonials from '../components/sections/Testimonials/Testimonials.astro';
+import StartProjects from '../components/sections/StartProjects/StartProjects.astro';
+import ContactUs from '../components/sections/ContactUs/ContactUs.astro';
+import Footer from '../components/layout/Footer/Footer.astro';
+import GlobalConstants from '../config/global.constants';
+
+const { title: layoutTitle, description: layoutDescription } = GlobalConstants.layout
+const { logo, links: headerLinks } = GlobalConstants.header;
+const { copyright, links: footerLinks } = GlobalConstants.footer;
+const { title: servicesTitle, description: servicesDescription, items: servicesItems } = GlobalConstants.services;
+const { title: statsTitle, items: statsItems } = GlobalConstants.stats;
+const { title: casesTitle, description: casesDescription, items: casesItems} = GlobalConstants.cases;
+const { title: techTitle, items: techItems } = GlobalConstants.technologies;
+const { title: testimonialsTitle, items: testimonialsItems } = GlobalConstants.testimonials;
+const { title: startProjectsTitle, description: startProjectsDescription, actions: startProjectsActions } = GlobalConstants.startProjects;
+const { title: contactUsTitle, description: contactUsDescription, form } = GlobalConstants.contact;
 ---
 
-<Layout title="Wezzax - Desarrollo de Aplicaciones Web SaaS">
-	<Header />
+<Layout title={layoutTitle} description={layoutDescription}>
+	<Header logo={logo} links={headerLinks} />
 	<Hero />
-	<Services />
-	<Stats />
-	<CaseStudies />
-	<Technologies />
-	<Testimonials />
-	<StartProjects />
-	<ContactUs />
-	<Footer />
+	<Services title={servicesTitle} description={servicesDescription} items={servicesItems} />
+	<Stats title={statsTitle} items={statsItems} />
+	<CaseStudies title={casesTitle} description={casesDescription} items={casesItems} />
+	<Technologies title={techTitle} items={techItems} />
+	<Testimonials title={testimonialsTitle} items={testimonialsItems} />
+	<StartProjects title={startProjectsTitle} description={startProjectsDescription} actions={startProjectsActions} />
+	<ContactUs title={contactUsTitle} description={contactUsDescription} form={form} />
+	<Footer copyright={copyright} links={footerLinks} />
 </Layout>

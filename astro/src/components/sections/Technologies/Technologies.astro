@@ -1,0 +1,29 @@
+---
+import './styles.css';
+
+interface Props {
+    title: string,
+    items: {
+        label: string,
+        color: string,
+    }[],
+}
+
+const { title, items } = Astro.props;
+
+---
+
+<section class="technology">
+    <div class="tech-container">
+        <div class="section-title">
+            <h2>{title}</h2>
+        </div>
+        <div class="tech-grid">
+            {items.map((tech) => (
+                <div class="tech-item" style={`color: ${tech.color}`}>
+                    {tech.label}
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
