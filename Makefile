@@ -32,6 +32,12 @@ sh: ## Conectarse a la terminal del contenedor de la aplicación
 install-npm: ## Instala las dependencias de npm:
 	docker run -v "$$PWD"/astro:/app -w /app node:22.12-slim /bin/sh -c "npm ci"
 
+app-build: ## Compila la aplicación y genera los ficheros estáticos necesarios
+	docker run -v "$$PWD"/astro:/app -w /app node:22.12-slim /bin/sh -c "rm -rf dist && npm run build"
+
+app-preview: ## Previsualiza la aplicación compilada previamente
+	docker run -v "$$PWD"/astro:/app -w /app -p "4100:4321" node:22.12-slim /bin/sh -c "npm run preview -- --host"
+
 logs: ## Ver logs de los contenedores
 	$(DOCKER_COMPOSE) logs -f ${APP_SERVICE}
 
