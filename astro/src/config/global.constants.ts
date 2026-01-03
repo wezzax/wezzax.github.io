@@ -1,4 +1,14 @@
 import localLogo from '../assets/wzx-logo.png';
+import type {ImageMetadata} from "astro";
+
+// Fix internal error response in local environment running preview
+const imageMetadataLogo = (localLogo as ImageMetadata);
+const localLogoFixed = {
+  src: imageMetadataLogo.src.replace('@fs/', ''),
+  width: imageMetadataLogo.width,
+  height: imageMetadataLogo.height,
+  format: imageMetadataLogo.format,
+} as ImageMetadata;
 
 export default {
   layout: {
@@ -6,7 +16,8 @@ export default {
     description: 'Desarrollamos aplicaciones web SaaS escalables y modernas',
   },
   header: {
-    logo: localLogo,
+    siteName: 'WEZZAX',
+    logo: localLogoFixed,
     links: [
       {
         id: 'inicio',

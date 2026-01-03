@@ -27,6 +27,7 @@ nav {
 
 .logo-image {
     max-height: 60px;
+    width: auto;
 }
 
 .nav-links {

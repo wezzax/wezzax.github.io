@@ -13,7 +13,7 @@ import Footer from '../components/layout/Footer/Footer.astro';
 import GlobalConstants from '../config/global.constants';
 
 const { title: layoutTitle, description: layoutDescription } = GlobalConstants.layout
-const { logo, links: headerLinks } = GlobalConstants.header;
+const { siteName, logo, links: headerLinks } = GlobalConstants.header;
 const { copyright, links: footerLinks } = GlobalConstants.footer;
 const { title: servicesTitle, description: servicesDescription, items: servicesItems } = GlobalConstants.services;
 const { title: statsTitle, items: statsItems } = GlobalConstants.stats;
@@ -25,7 +25,7 @@ const { title: contactUsTitle, description: contactUsDescription, form } = Globa
 ---
 
 <Layout title={layoutTitle} description={layoutDescription}>
-	<Header logo={logo} links={headerLinks} />
+	<Header siteName={siteName} logo={logo} links={headerLinks} />
 	<Hero />
 	<Services title={servicesTitle} description={servicesDescription} items={servicesItems} />
 	<Stats title={statsTitle} items={statsItems} />

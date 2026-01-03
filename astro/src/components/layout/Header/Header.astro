@@ -4,6 +4,7 @@ import type { ImageMetadata } from 'astro';
 import './styles.css';
 
 interface Props {
+    siteName: string,
     logo: ImageMetadata,
     links: {
         id: string,
@@ -11,13 +12,13 @@ interface Props {
     }[]
 }
 
-const {logo, links = []} = Astro.props;
+const {siteName, logo, links = []} = Astro.props;
 ---
 
 <header>
     <nav>
         <div class="logo">
-            <Image class="logo-image" alt="WEZZAX" src={logo} priority={true} />
+            <Image class="logo-image" alt={siteName} src={logo} priority={true} />
         </div>
         <ul class="nav-links">
             {links.map((item) => (
