@@ -11,7 +11,7 @@ header {
 nav {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 20px 60px;
+    padding: 10px 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;

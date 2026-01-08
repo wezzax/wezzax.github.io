@@ -139,8 +139,8 @@
         grid-template-columns: 1fr;
     }
 
-    .service-card.large {
-        grid-row: span 1;
+    .service-card.large .card-visual {
+        display: none;
     }
 
     .large .service-content {
