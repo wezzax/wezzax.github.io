@@ -10,29 +10,82 @@ import Testimonials from '../components/sections/Testimonials/Testimonials.astro
 import StartProjects from '../components/sections/StartProjects/StartProjects.astro';
 import ContactUs from '../components/sections/ContactUs/ContactUs.astro';
 import Footer from '../components/layout/Footer/Footer.astro';
-import GlobalConstants from '../config/global.constants';
+import {
+	getCaseStudies,
+	getContactUs,
+	getServices,
+	getSiteSettings,
+	getStartProjects,
+	getStats,
+	getTechnologies,
+	getTestimonials
+} from '../lib/cms.repository';
+import wzxLogo from '../assets/wzx-logo.png';
+import type {ImageMetadata} from "astro";
 
-const { title: layoutTitle, description: layoutDescription } = GlobalConstants.layout
-const { siteName, logo, links: headerLinks } = GlobalConstants.header;
-const { copyright, links: footerLinks } = GlobalConstants.footer;
-const { title: servicesTitle, description: servicesDescription, items: servicesItems } = GlobalConstants.services;
-const { title: statsTitle, items: statsItems } = GlobalConstants.stats;
-const { title: casesTitle, description: casesDescription, items: casesItems} = GlobalConstants.cases;
-const { title: techTitle, items: techItems } = GlobalConstants.technologies;
-const { title: testimonialsTitle, items: testimonialsItems } = GlobalConstants.testimonials;
-const { title: startProjectsTitle, description: startProjectsDescription, actions: startProjectsActions } = GlobalConstants.startProjects;
-const { title: contactUsTitle, description: contactUsDescription, form } = GlobalConstants.contact;
+// Fix internal error response in local environment running preview
+const imageMetadataLogo = (wzxLogo as ImageMetadata);
+const wzxLogoFixed = {
+	src: imageMetadataLogo.src.replace('@fs/', ''),
+	width: imageMetadataLogo.width,
+	height: imageMetadataLogo.height,
+	format: imageMetadataLogo.format,
+} as ImageMetadata;
+
+const settings = await getSiteSettings();
+const services = await getServices();
+const stats = await getStats();
+const caseStudies = await getCaseStudies();
+const technologies = await getTechnologies();
+const testimonials = await getTestimonials();
+const startProjects = await getStartProjects();
+const contactUs = await getContactUs();
 ---
 
-<Layout title={layoutTitle} description={layoutDescription}>
-	<Header siteName={siteName} logo={logo} links={headerLinks} />
+<Layout
+	title={settings.siteTitle}
+	description={settings.siteDescription}
+>
+	<Header
+		siteName={settings.siteName}
+		logo={wzxLogoFixed}
+		links={settings.header.links}
+	/>
 	<Hero />
-	<Services title={servicesTitle} description={servicesDescription} items={servicesItems} />
-	<Stats title={statsTitle} items={statsItems} />
-	<CaseStudies title={casesTitle} description={casesDescription} items={casesItems} />
-	<Technologies title={techTitle} items={techItems} />
-	<Testimonials title={testimonialsTitle} items={testimonialsItems} />
-	<StartProjects title={startProjectsTitle} description={startProjectsDescription} actions={startProjectsActions} />
-	<ContactUs title={contactUsTitle} description={contactUsDescription} form={form} />
-	<Footer copyright={copyright} links={footerLinks} />
+	<Services
+		title={services.title}
+		description={services.description}
+		items={services.items}
+	/>
+	<Stats
+		title={stats.title}
+		items={stats.items}
+	/>
+	<CaseStudies
+		title={caseStudies.title}
+		description={caseStudies.description}
+		items={caseStudies.items}
+	/>
+	<Technologies
+		title={technologies.title}
+		items={technologies.items}
+	/>
+	<Testimonials
+		title={testimonials.title}
+		items={testimonials.items}
+	/>
+	<StartProjects
+		title={startProjects.title}
+		description={startProjects.description}
+		actions={startProjects.actions}
+	/>
+	<ContactUs
+		title={contactUs.title}
+		description={contactUs.description}
+		form={contactUs.form}
+	/>
+	<Footer
+		copyright={settings.footer.copyright}
+		links={settings.footer.links}
+	/>
 </Layout>
