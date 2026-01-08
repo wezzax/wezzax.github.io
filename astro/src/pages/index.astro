@@ -10,16 +10,7 @@ import Testimonials from '../components/sections/Testimonials/Testimonials.astro
 import StartProjects from '../components/sections/StartProjects/StartProjects.astro';
 import ContactUs from '../components/sections/ContactUs/ContactUs.astro';
 import Footer from '../components/layout/Footer/Footer.astro';
-import {
-	getCaseStudies,
-	getContactUs,
-	getServices,
-	getSiteSettings,
-	getStartProjects,
-	getStats,
-	getTechnologies,
-	getTestimonials
-} from '../lib/cms.repository';
+import { getStaticContent } from '../lib/cms.repository';
 import wzxLogo from '../assets/wzx-logo.png';
 import type {ImageMetadata} from "astro";
 
@@ -32,14 +23,16 @@ const wzxLogoFixed = {
 	format: imageMetadataLogo.format,
 } as ImageMetadata;
 
-const settings = await getSiteSettings();
-const services = await getServices();
-const stats = await getStats();
-const caseStudies = await getCaseStudies();
-const technologies = await getTechnologies();
-const testimonials = await getTestimonials();
-const startProjects = await getStartProjects();
-const contactUs = await getContactUs();
+const {
+	siteSettings: settings,
+	services,
+	stats,
+	cases: caseStudies,
+	technologies,
+	testimonials,
+	startProjects,
+	contactForm: contactUs
+} = await getStaticContent();
 ---
 
 <Layout

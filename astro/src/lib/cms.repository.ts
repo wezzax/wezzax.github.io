@@ -1,23 +1,17 @@
 import client from './contentful.ts';
 import type {
-  CaseStudies, ContactUs,
+  CaseStudies,
+  ContactUs,
   Services,
   SiteSettings,
   StartProjects,
   Stats,
   Technologies,
-  Testimonials
+  Testimonials,
 } from './cms.types.ts';
 
-export async function getSiteSettings(): Promise<SiteSettings> {
-  const entry = await client.getEntries({
-    content_type: 'siteSettings',
-    limit: 1,
-  });
-
-  const fields = entry.items[0].fields as any;
-
-  return {
+const mappingContentType = {
+  siteSettings: (fields: any): SiteSettings => ({
     siteTitle: fields.title,
     siteDescription: fields.description,
     siteName: fields.siteName,
@@ -28,109 +22,57 @@ export async function getSiteSettings(): Promise<SiteSettings> {
       copyright: fields.copyright,
       links: fields.footerLinks,
     },
-  };
-}
-
-export async function getServices(): Promise<Services> {
-  const entry = await client.getEntries({
-    content_type: 'services',
-    limit: 1,
-  });
-
-  const fields = entry.items[0].fields as any;
-
-  return {
+  }),
+  services: (fields: any): Services => ({
     title: fields.title,
     description: fields.description,
     items: fields.items,
-  };
-}
-
-export async function getStats(): Promise<Stats> {
-  const entry = await client.getEntries({
-    content_type: 'stats',
-    limit: 1,
-  });
-
-  const fields = entry.items[0].fields as any;
-
-  return {
+  }),
+  stats: (fields: any): Stats => ({
     title: fields.title,
     items: fields.items,
-  };
-}
-
-export async function getCaseStudies(): Promise<CaseStudies> {
-  const entry = await client.getEntries({
-    content_type: 'cases',
-    limit: 1,
-  });
-
-  const fields = entry.items[0].fields as any;
-
-  return {
+  }),
+  cases: (fields: any): CaseStudies => ({
     title: fields.title,
     description: fields.description,
     items: fields.items,
-  };
-}
-
-export async function getTechnologies(): Promise<Technologies> {
-  const entry = await client.getEntries({
-    content_type: 'technologies',
-    limit: 1,
-  });
-
-  const fields = entry.items[0].fields as any;
-
-  return {
+  }),
+  technologies: (fields: any): Technologies => ({
     title: fields.title,
     items: fields.items,
-  };
-}
-
-
-export async function getTestimonials(): Promise<Testimonials> {
-  const entry = await client.getEntries({
-    content_type: 'testimonials',
-    limit: 1,
-  });
-
-  const fields = entry.items[0].fields as any;
-
-  return {
+  }),
+  testimonials: (fields: any): Testimonials => ({
     title: fields.title,
     items: fields.items,
-  };
-}
-
-export async function getStartProjects(): Promise<StartProjects> {
-  const entry = await client.getEntries({
-    content_type: 'startProjects',
-    limit: 1,
-  });
-
-  const fields = entry.items[0].fields as any;
-
-  return {
+  }),
+  startProjects: (fields: any): StartProjects => ({
     title: fields.title,
     description: fields.description,
     actions: fields.actions,
-  };
-}
-
-export async function getContactUs(): Promise<ContactUs> {
-  const entry = await client.getEntries({
-    content_type: 'contactForm',
-    limit: 1,
-  });
-
-  const fields = entry.items[0].fields as any;
-
-  return {
+  }),
+  contactForm: (fields: any): ContactUs => ({
     title: fields.title,
     description: fields.description,
     form: fields.form,
-  };
-}
+  }),
+};
+const processContentType = (contentType: string, fields: any) => mappingContentType[contentType](fields);
 
+export async function getStaticContent(): Promise<any> {
+  const entries = await client.getEntries({});
+
+  return entries.items.reduce((output, item) => {
+    const contentType = item.sys.contentType.sys.id;
+    const fields = item.fields;
+
+    const processed = (Object.keys(mappingContentType).includes(contentType) && processContentType(contentType, fields)) || undefined;
+    if (processed === undefined) {
+      return output;
+    }
+
+    return {
+      ...output,
+      [contentType]: processed,
+    };
+  }, {});
+}
