@@ -12,6 +12,7 @@ import ContactUs from '../components/sections/ContactUs/ContactUs.astro';
 import Footer from '../components/layout/Footer/Footer.astro';
 import { getStaticContent } from '../lib/cms.repository';
 import wzxLogo from '../assets/wzx-logo.png';
+import bgHero from '../assets/bg-hero.jpg';
 import type {ImageMetadata} from "astro";
 
 // Fix internal error response in local environment running preview
@@ -22,7 +23,13 @@ const wzxLogoFixed = {
 	height: imageMetadataLogo.height,
 	format: imageMetadataLogo.format,
 } as ImageMetadata;
-
+const imageMetadataHero = (bgHero as ImageMetadata);
+const bgHeroFixed = {
+	src: imageMetadataHero.src.replace('@fs/', ''),
+	width: imageMetadataHero.width,
+	height: imageMetadataHero.height,
+	format: imageMetadataHero.format,
+} as ImageMetadata;
 const {
 	siteSettings: settings,
 	services,
@@ -44,7 +51,10 @@ const {
 		logo={wzxLogoFixed}
 		links={settings.header.links}
 	/>
-	<Hero />
+	<Hero
+		siteName={settings.siteName}
+		bgHero={bgHeroFixed}
+	/>
 	<Services
 		title={services.title}
 		description={services.description}

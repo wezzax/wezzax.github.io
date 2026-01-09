@@ -1,13 +1,21 @@
 ---
+import { Image } from 'astro:assets';
 import type {ImageMetadata} from "astro";
-
 import './styles.css';
 
-import bgHero from '../../../assets/bg-hero.jpg';
+interface Props {
+    siteName: string,
+    bgHero: ImageMetadata,
+}
+
+const {siteName, bgHero} = Astro.props;
+
 ---
 
 <section class="hero" id="inicio">
-    <div class="hero-background"><img src={(bgHero as ImageMetadata).src} alt="WEZZAX" /></div>
+    <div class="hero-background">
+        <Image src={bgHero} alt={siteName} priority={true} />
+    </div>
     <div class="hero-wrapper">
         <div class="hero-content">
             <h1>Transformamos <span class="highlight">tus ideas</span> en aplicaciones reales</h1>
