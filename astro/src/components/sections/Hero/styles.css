@@ -15,7 +15,12 @@
 }
 
 .hero-content {
-    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero h1 {
@@ -23,6 +28,7 @@
     font-weight: bold;
     line-height: 1.1;
     margin-bottom: 30px;
+    text-align: center;
 }
 
 .hero h1 .highlight {
@@ -33,6 +39,7 @@
     font-size: 20px;
     color: #555;
     margin-bottom: 40px;
+    text-align: center;
 }
 
 .hero-buttons {
@@ -54,101 +61,6 @@
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 20px rgba(107, 76, 230, 0.4);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: #3d5af1;
-    padding: 12px 30px;
-    border: 2px solid #3d5af1;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s;
-    display: inline-block;
-}
-
-.btn-secondary:hover {
-    background: #3d5af1;
-    color: white;
-}
-
-.hero-image {
-    width: 600px;
-    height: 450px;
-    background: #f8f9ff;
-    border-radius: 20px;
-    position: relative;
-    padding: 50px;
-}
-
-.browser-mockup {
-    width: 100%;
-    height: 100%;
-    background: white;
-    border-radius: 12px;
-    border: 2px solid #e0e0e0;
-    padding: 30px 20px 20px;
-    position: relative;
-}
-
-.browser-dots {
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    display: flex;
-    gap: 8px;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-}
-
-.dot:nth-child(1) { background: #ff5f56; }
-.dot:nth-child(2) { background: #ffbd2e; }
-.dot:nth-child(3) { background: #27c93f; }
-
-.mockup-content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.mockup-bar {
-    height: 12px;
-    background: rgba(61, 90, 241, 0.3);
-    border-radius: 6px;
-    width: 60%;
-}
-
-.mockup-text {
-    height: 8px;
-    background: #e0e0e0;
-    border-radius: 4px;
-}
-
-.slider-dots {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 12px;
-}
-
-.slider-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #e0e0e0;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.slider-dot.active {
-    background: #3d5af1;
 }
 
 @media (max-width: 1024px) {
