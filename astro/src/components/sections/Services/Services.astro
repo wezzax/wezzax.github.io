@@ -21,31 +21,8 @@ const {title, description, items = []} = Astro.props;
         <p>{description}</p>
     </div>
     <div class="services-grid">
-        {items.length > 0 && (
-          <div class="service-card large">
-              <div class="service-content">
-                  <div class="card-visual">
-                      <div class="decorative-circle" style="width: 80px; height: 80px; top: 40px; left: 80px;"></div>
-                      <div class="decorative-circle" style="width: 40px; height: 40px; top: 120px; left: 30px;"></div>
-                      <div class="decorative-circle" style="width: 60px; height: 60px; top: 180px; left: 250px;"></div>
-                  </div>
-                  <div>
-                      <div class="card-icon">
-                          <div class="icon-inner"></div>
-                      </div>
-                      <h3><Fragment set:html={items[0].title} /></h3>
-                      <p><Fragment set:html={items[0].description} /></p>
-                      <ul class="service-features">
-                          {items[0].features.map((feature) => (
-                            <li><span class="feature-dot"></span> <Fragment set:html={feature} /></li>
-                          ))}
-                      </ul>
-                  </div>
-              </div>
-          </div>
-        )}
-            {items.slice(1).map((item, index) => (
-              <div class=`service-card medium-${index+1}`>
+            {items.map((item, index) => (
+              <div class=`service-card card-${index % 2 === 0 ? 'blue' : 'purple'}`>
                   <div class="card-icon">
                       <div class="icon-inner"></div>
                   </div>

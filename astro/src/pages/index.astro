@@ -26,10 +26,10 @@ const wzxLogoFixed = {
 const {
 	siteSettings: settings,
 	services,
-	stats,
-	cases: caseStudies,
+	// stats,
+	// cases: caseStudies,
 	technologies,
-	testimonials,
+	// testimonials,
 	startProjects,
 	contactForm: contactUs
 } = await getStaticContent();
@@ -50,23 +50,23 @@ const {
 		description={services.description}
 		items={services.items}
 	/>
-	<Stats
+	<!--<Stats
 		title={stats.title}
 		items={stats.items}
-	/>
-	<CaseStudies
+	/>-->
+	<!--<CaseStudies
 		title={caseStudies.title}
 		description={caseStudies.description}
 		items={caseStudies.items}
-	/>
+	/>-->
 	<Technologies
 		title={technologies.title}
 		items={technologies.items}
 	/>
-	<Testimonials
+	<!--<Testimonials
 		title={testimonials.title}
 		items={testimonials.items}
-	/>
+	/>-->
 	<StartProjects
 		title={startProjects.title}
 		description={startProjects.description}
